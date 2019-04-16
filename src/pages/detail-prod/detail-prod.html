@@ -1,0 +1,48 @@
+<ion-header no-border no-shadow>
+  <ion-navbar>
+    <ion-title text-center>Detalle Producto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <p>{{codeData}}</p> -->
+  <ion-row *ngIf="dataProd" justify-content-center>
+    <ion-col col-12>
+      <h1 text-center>{{detailProd[0].name}}</h1>
+    </ion-col>
+    <ion-row>
+      <ion-col col-6>
+        <p text-center float-left>Producto Id: </p>
+      </ion-col>
+      <ion-col col-6>
+        <p text-center float-right>{{detailProd[0].id}}</p>
+      </ion-col>
+      <ion-col col-6>
+        <p text-center float-left>Precio:</p>
+      </ion-col>
+      <ion-col col-6>
+        <p text-center float-right>$ {{detailProd[0].price}}</p>
+      </ion-col>
+      <ion-col col-6>
+        <p text-center float-left>Stock: </p>
+      </ion-col>
+      <ion-col col-6>
+        <p text-center float-right>{{detailProd[0].units}} unidades</p>
+      </ion-col>
+    </ion-row>
+  </ion-row>
+  
+</ion-content>
+<ion-footer no-padding>
+  <ion-row justify-content-center *ngIf="userData.id === 1">
+    <button ion-button full (click)="goBackScan()">Volver a Scanear</button>
+  </ion-row>
+  <ion-row justify-content-center *ngIf="!(userData.id === 1)"> 
+    <ion-col>
+      <button float-left ion-button (click)="goBackScan()">Scanear</button>
+    </ion-col>
+    <ion-col>
+      <button float-right ion-button (click)="editProd()">Editar</button>      
+    </ion-col>
+  </ion-row>
+</ion-footer>

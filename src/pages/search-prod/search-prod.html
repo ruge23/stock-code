@@ -1,0 +1,34 @@
+<ion-header no-border no-shadow>
+  <ion-navbar>
+    <ion-searchbar
+    placeholder="ingrese el codigo completo del producto"
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row *ngIf="product.length > 0">
+    <ion-item>
+      <p item-start>{{product[0].name}}</p>
+      <p item-end>$ {{product[0].price}}</p>
+      <p item-end>{{product[0].units}} unidades</p>
+    </ion-item>
+  </ion-row>
+</ion-content>
+<ion-footer no-padding>
+  <ion-row justify-content-center *ngIf="userData.id === 1 && product.length > 0">
+    <button ion-button full (click)="goBackScan()">Volver a Scanear</button>
+  </ion-row>
+  <ion-row justify-content-center *ngIf="!(userData.id === 1) && product.length > 0">
+    <ion-col>
+      <button float-left ion-button (click)="goBackScan()">Scanear</button>
+    </ion-col>
+    <ion-col>
+      <button float-right ion-button (click)="editProd()">Editar</button>      
+    </ion-col>
+  </ion-row>
+</ion-footer>
