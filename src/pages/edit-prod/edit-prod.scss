@@ -1,3 +1,13 @@
 page-edit-prod {
-
+    .content{
+        background-color: #393939;
+    }
+    .back-button-md,
+    .back-button-ios {
+        color: white;
+    }
+    .data{
+        width: 100%;
+        border-bottom: 1px solid #B68549;
+    }
 }

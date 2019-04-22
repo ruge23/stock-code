@@ -1,5 +1,4 @@
 import { EditProdPage } from './../pages/edit-prod/edit-prod';
-import { TabsPage } from './../pages/tabs/tabs';
 import { SearchProdPage } from './../pages/search-prod/search-prod';
 import { DetailProdPage } from './../pages/detail-prod/detail-prod';
 import { LoginPage } from './../pages/login/login';
@@ -22,7 +21,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     HomePage,
     LoginPage,
     SearchProdPage,
-    TabsPage,
     DetailProdPage,
     EditProdPage
   ],
@@ -37,7 +35,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     HomePage,
     LoginPage,
     SearchProdPage,
-    TabsPage,
     DetailProdPage,
     EditProdPage
   ],

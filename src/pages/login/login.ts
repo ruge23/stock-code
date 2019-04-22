@@ -1,4 +1,4 @@
-import { TabsPage } from './../tabs/tabs';
+import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { ServicesProvider } from '../../providers/services/services';
@@ -29,7 +29,6 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-
   validar(){
     if(this.user.name === "" || this.user.pass === ""){
       this.presentToast();
@@ -50,7 +49,7 @@ export class LoginPage {
         this.dataUser = data['users'].filter(user=>{
           return user['id'] === 1;
         })
-        this.navCtrl.setRoot(TabsPage, this.dataUser[0]);
+        this.navCtrl.setRoot(HomePage, this.dataUser[0]);
       })
     }else if(usuario === 'Usuario2'){
       this.services.getUsuario().subscribe(data=>{
@@ -59,7 +58,7 @@ export class LoginPage {
         this.dataUser = data['users'].filter(user=>{
           return user['id'] === 2;
         })
-        this.navCtrl.setRoot(TabsPage, this.dataUser[0]);
+        this.navCtrl.setRoot(HomePage, this.dataUser[0]);
       })
     }else{
       this.presentToast();

@@ -1,3 +1,34 @@
 page-detail-prod {
-
+    .content{
+        background-color: #393939;
+    }
+    .back-button-md,
+    .back-button-ios {
+        color: white;
+    }
+    .data{
+        width: 100%;
+        border-bottom: 1px solid #B68549;
+    }
+    p{
+        color: white;
+    }
+    .button.user1{
+        text-transform: none;
+        background-color: #B68549;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        .button-inner{
+            display: contents;
+            .icon{
+                font-size: 2.3em;
+            }
+            p{
+                margin: 5px;
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+        }
+    }
 }

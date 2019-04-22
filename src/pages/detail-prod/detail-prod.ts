@@ -1,8 +1,10 @@
+import { HomePage } from './../home/home';
 import { ServicesProvider } from './../../providers/services/services';
 import { EditProdPage } from './../edit-prod/edit-prod';
-import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
 import { NavController, NavParams, App } from 'ionic-angular';
+import { SearchProdPage } from '../search-prod/search-prod';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 
 @Component({
@@ -19,6 +21,7 @@ export class DetailProdPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    private barcodeScanner: BarcodeScanner,
     public app: App,
     private services: ServicesProvider,
   ) {
@@ -37,7 +40,7 @@ export class DetailProdPage {
 
   goBackScan(){
     let nav = this.app.getRootNav(); 
-    nav.setRoot(TabsPage, {tabIndex: 0, user: this.userData, vuelta: true});
+    nav.setRoot(HomePage, {tabIndex: 0, user: this.userData, vuelta: true});
   }
 
   editProd(){
@@ -57,4 +60,28 @@ export class DetailProdPage {
     })
   }
 
+  goToSearch(){
+    this.navCtrl.push(SearchProdPage);
+  }
+
+  iniciarScan(){
+    this.barcodeScanner.scan({
+      preferFrontCamera : false, // iOS and Android
+      showFlipCameraButton : true, // iOS and Android
+      showTorchButton : true, // iOS and Android
+      torchOn: true, // Android, launch with the torch switched on (if available)
+      prompt : "Place a barcode inside the scan area", // Android
+      resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+      formats : "EAN_13", // default: all but PDF_417 and RSS_EXPANDED
+      orientation : "portrait", // Android only (portrait|landscape), default unset so it rotates with the device
+      disableAnimations : true, // iOS
+      disableSuccessBeep: false // iOS and Android
+  }).then(barcodedata=>{
+      //alert(JSON.stringify(barcodedata, null, 4))
+      if(barcodedata){
+        this.navCtrl.push(DetailProdPage, {code:JSON.stringify(barcodedata, null, 4), user: this.userData});
+      }
+      //console.log('dataCodigo', barcodedata);
+    })
+  }
 }

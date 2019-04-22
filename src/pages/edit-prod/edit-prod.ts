@@ -1,5 +1,5 @@
-import { TabsPage } from './../tabs/tabs';
-import { Component } from '@angular/core';
+import { HomePage } from './../home/home';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, ToastController, App } from 'ionic-angular';
 
 
@@ -8,7 +8,8 @@ import { NavController, NavParams, ToastController, App } from 'ionic-angular';
   templateUrl: 'edit-prod.html',
 })
 export class EditProdPage {
-
+  
+  @ViewChild('input') myInput ;
   producto:any=[];
   prod:any=[];
   userData:any=[];
@@ -22,6 +23,9 @@ export class EditProdPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditProdPage');
+    setTimeout(() => {
+      this.myInput.setFocus();
+    },150);
   }
 
   ionViewWillEnter(){
@@ -29,7 +33,7 @@ export class EditProdPage {
     this.userData = this.navParams.data.user;
     this.prod = this.navParams.data.prod;
     console.log('prod', this.prod);
-    this.producto['name'] = this.prod[0].name;
+    this.producto['id'] = this.prod[0].id;
     this.producto['price'] = this.prod[0].price;
     this.producto['units'] = this.prod[0].units;
   }
@@ -43,7 +47,7 @@ export class EditProdPage {
     toast.present();
     setTimeout(()=>{
       let nav = this.app.getRootNav(); 
-      nav.setRoot(TabsPage, {tabIndex: 0, user: this.userData, vuelta: true});
+      nav.setRoot(HomePage, {user: this.userData, vuelta: true});
     },2500)
   }
 

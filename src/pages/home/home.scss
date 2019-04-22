@@ -1,3 +1,26 @@
 page-home {
-
+    .content{
+        background-color: #393939;
+    }
+    h1{
+        color: white;
+    }
+    .button{
+        text-transform: none;
+        background-color: #B68549;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        .button-inner{
+            display: contents;
+            .icon{
+                font-size: 2.3em;
+            }
+            p{
+                margin: 5px;
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+        }
+    }
 }

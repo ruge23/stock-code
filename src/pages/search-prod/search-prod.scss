@@ -1,3 +1,14 @@
 page-search-prod {
-
+    .content{
+        background-color: #393939;
+    }
+    .back-button-md,
+    .back-button-ios {
+        color: white;
+    }
+    h1.inicio{
+        font-weight: 300;
+        color: white;
+        font-size: 2.3em;
+    }
 }

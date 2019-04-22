@@ -38,7 +38,9 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  btn:        #B68549,
+  text:       #8B8B8B,
 );
 
 
@@ -52,7 +54,7 @@ $colors: (
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
+$text-input-md-highlight-color: transparent;
 
 
 
@@ -65,6 +67,8 @@ $colors: (
 
 // App Theme
 // --------------------------------------------------
+$text-input-highlight-color-valid: transparent;
+$text-input-placeholder-color: #DCDBDB;
 // Ionic apps can have different themes applied, which can
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's

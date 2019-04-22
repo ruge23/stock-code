@@ -1,6 +1,5 @@
-<ion-header no-border no-shadow>
-  <ion-navbar>
-    <ion-title text-center>Detalle Producto</ion-title>
+<ion-header no-border no-shadow trasparent>
+  <ion-navbar transparent>
   </ion-navbar>
 </ion-header>
 
@@ -8,41 +7,56 @@
   <!-- <p>{{codeData}}</p> -->
   <ion-row *ngIf="dataProd" justify-content-center>
     <ion-col col-12>
-      <h1 text-center>{{detailProd[0].name}}</h1>
+      <h2 style="color: white;" text-center>Producto encontrado!</h2>
     </ion-col>
-    <ion-row>
-      <ion-col col-6>
-        <p text-center float-left>Producto Id: </p>
-      </ion-col>
-      <ion-col col-6>
-        <p text-center float-right>{{detailProd[0].id}}</p>
-      </ion-col>
-      <ion-col col-6>
-        <p text-center float-left>Precio:</p>
-      </ion-col>
-      <ion-col col-6>
-        <p text-center float-right>$ {{detailProd[0].price}}</p>
-      </ion-col>
-      <ion-col col-6>
-        <p text-center float-left>Stock: </p>
-      </ion-col>
-      <ion-col col-6>
-        <p text-center float-right>{{detailProd[0].units}} unidades</p>
-      </ion-col>
+    <ion-row style="margin-top: 10%;">
+      <div class="data">
+        <ion-col col-6>
+          <p text-center float-left><strong>ID del Producto</strong></p>
+        </ion-col>
+        <ion-col col-6>
+          <p text-center float-right>{{detailProd[0].id}}</p>
+        </ion-col>
+      </div>
+      <div class="data">
+        <ion-col col-6>
+          <p text-center float-left><strong>Precio</strong></p>
+        </ion-col>
+        <ion-col col-6>
+          <p text-center float-right>$ {{detailProd[0].price}}</p>
+        </ion-col>
+      </div>
+      <div class="data">
+        <ion-col col-6>
+          <p text-center float-left><strong>Stock</strong></p>
+        </ion-col>
+        <ion-col col-6>
+          <p text-center float-right>{{detailProd[0].units}}</p>
+        </ion-col>
+      </div>
     </ion-row>
   </ion-row>
-  
+  <div *ngIf="dataProd">
+    <ion-row style="margin-top: 10%;" justify-content-center *ngIf="!(userData.id === 1)"> 
+      <ion-col text-center>
+        <button color="btn" style="text-transform: none; font-size: 1.5em;padding-top: 5px; padding-bottom: 5px;" text-center ion-button (click)="editProd()">Editar</button>      
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top: 10%;" justify-content-center>
+      <ion-col col-6 text-center>
+        <button class="user1" ion-button icon-only (click)="iniciarScan()">
+          <ion-icon name="qr-scanner"></ion-icon>
+          <span text-center><p text-center>Escanear</p></span>
+        </button>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <button class="user1" ion-button icon-only (click)="goToSearch()">
+          <ion-icon name="search"></ion-icon>
+          <span text-center><p text-center>Buscar</p></span>
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>
 <ion-footer no-padding>
-  <ion-row justify-content-center *ngIf="userData.id === 1">
-    <button ion-button full (click)="goBackScan()">Volver a Scanear</button>
-  </ion-row>
-  <ion-row justify-content-center *ngIf="!(userData.id === 1)"> 
-    <ion-col>
-      <button float-left ion-button (click)="goBackScan()">Scanear</button>
-    </ion-col>
-    <ion-col>
-      <button float-right ion-button (click)="editProd()">Editar</button>      
-    </ion-col>
-  </ion-row>
 </ion-footer>

@@ -1,3 +1,4 @@
+import { SearchProdPage } from './../search-prod/search-prod';
 import { LoginPage } from './../login/login';
 import { DetailProdPage } from './../detail-prod/detail-prod';
 import { Component } from '@angular/core';
@@ -53,6 +54,10 @@ export class HomePage {
       }
       //console.log('dataCodigo', barcodedata);
     })
+  }
+
+  goToSearch(){
+    this.navCtrl.push(SearchProdPage);
   }
 
   logOut(){

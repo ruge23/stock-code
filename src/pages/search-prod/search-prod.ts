@@ -1,8 +1,9 @@
+import { HomePage } from './../home/home';
 import { ServicesProvider } from './../../providers/services/services';
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, App, ToastController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
 import { EditProdPage } from '../edit-prod/edit-prod';
+import { DetailProdPage } from '../detail-prod/detail-prod';
 
 
 @Component({
@@ -73,9 +74,13 @@ export class SearchProdPage {
     }
   }
 
+  buscar(){
+    this.navCtrl.push(DetailProdPage, {user: this.userData})
+  }
+
   goBackScan(){
     let nav = this.app.getRootNav(); 
-    nav.setRoot(TabsPage, {tabIndex: 0, user: this.userData, vuelta: true});
+    nav.setRoot(HomePage, {tabIndex: 0, user: this.userData, vuelta: true});
   }
 
   editProd(){

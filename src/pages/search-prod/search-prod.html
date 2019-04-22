@@ -1,34 +1,21 @@
-<ion-header no-border no-shadow>
-  <ion-navbar>
-    <ion-searchbar
-    placeholder="ingrese el codigo completo del producto"
-    [(ngModel)]="myInput"
-    [showCancelButton]="shouldShowCancel"
-    (ionInput)="onInput($event)"
-    (ionCancel)="onCancel($event)">
-  </ion-searchbar>
+<ion-header no-border no-shadow trasparent>
+  <ion-navbar transparent>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-row *ngIf="product.length > 0">
-    <ion-item>
-      <p item-start>{{product[0].name}}</p>
-      <p item-end>$ {{product[0].price}}</p>
-      <p item-end>{{product[0].units}} unidades</p>
-    </ion-item>
+  <ion-row justify-content-center>
+    <h1 class="inicio" padding text-center text-wrap>Ingresá el <strong>código completo</strong> del producto</h1>
+  </ion-row>
+  <ion-row style="margin-top: 10%;" justify-content-center>
+    <ion-searchbar
+      placeholder="785132-XIOC"
+      [(ngModel)]="myInput"
+      (ionInput)="onInput($event)">
+    </ion-searchbar>
+  </ion-row>
+  <ion-row justify-content-center style="margin-top: 15%;">
+    <button ion-button color="btn" style="font-size:1.5em; padding-bottom: 8px;padding-top: 8px;text-transform: none;" (click)="buscar()">Buscar</button>
   </ion-row>
 </ion-content>
-<ion-footer no-padding>
-  <ion-row justify-content-center *ngIf="userData.id === 1 && product.length > 0">
-    <button ion-button full (click)="goBackScan()">Volver a Scanear</button>
-  </ion-row>
-  <ion-row justify-content-center *ngIf="!(userData.id === 1) && product.length > 0">
-    <ion-col>
-      <button float-left ion-button (click)="goBackScan()">Scanear</button>
-    </ion-col>
-    <ion-col>
-      <button float-right ion-button (click)="editProd()">Editar</button>      
-    </ion-col>
-  </ion-row>
-</ion-footer>
+
