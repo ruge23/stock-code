@@ -15,7 +15,7 @@ export class DetailProdPage {
 
   codeData:any=[];
   userData:any=[];
-  dataProd:boolean = false;
+  //dataProd:boolean = false;
   detailProd:any=[];
 
   constructor(
@@ -28,10 +28,12 @@ export class DetailProdPage {
   }
 
   ionViewWillEnter(){
-    this.codeData = this.navParams.data['code'];
-    this.userData = this.navParams.data['user']; 
-    //alert(this.codeData);
-    this.devolverProd();
+    // this.codeData = this.navParams.data['code'];
+    // this.userData = this.navParams.data['user']; 
+    // //alert(this.codeData);
+    // this.devolverProd();
+    this.userData = this.services.usuario;
+    this.detailProd = this.navParams.data;
   }
 
   ionViewDidLoad() {
@@ -44,21 +46,21 @@ export class DetailProdPage {
   }
 
   editProd(){
-    this.navCtrl.push(EditProdPage, {prod: this.detailProd , user: this.userData});
+    this.navCtrl.push(EditProdPage, this.detailProd);
   }
 
-  devolverProd(){
-    let index = Math.floor(Math.random() * 10 + 1);
-    console.log('index', index);
-    this.services.getProducts().subscribe(prod =>{
-      this.detailProd = prod['products'].filter(p=>{
-        //console.log('ṕ', p);
-        return p.id === index;
-      })
-      this.dataProd = true;
-      console.log('det', this.detailProd[0]);
-    })
-  }
+  // devolverProd(){
+  //   let index = Math.floor(Math.random() * 10 + 1);
+  //   console.log('index', index);
+  //   this.services.getProducts().subscribe(prod =>{
+  //     this.detailProd = prod['products'].filter(p=>{
+  //       //console.log('ṕ', p);
+  //       return p.id === index;
+  //     })
+  //     this.dataProd = true;
+  //     console.log('det', this.detailProd[0]);
+  //   })
+  // }
 
   goToSearch(){
     this.navCtrl.push(SearchProdPage);

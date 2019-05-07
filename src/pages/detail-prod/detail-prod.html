@@ -5,17 +5,17 @@
 
 <ion-content padding>
   <!-- <p>{{codeData}}</p> -->
-  <ion-row *ngIf="dataProd" justify-content-center>
+  <ion-row *ngIf="detailProd" justify-content-center>
     <ion-col col-12>
       <h2 style="color: white;" text-center>Producto encontrado!</h2>
     </ion-col>
     <ion-row style="margin-top: 10%;">
       <div class="data">
         <ion-col col-6>
-          <p text-center float-left><strong>ID del Producto</strong></p>
+          <p text-center float-left><strong>ID del Producto: {{detailProd.nombre}}</strong></p>
         </ion-col>
         <ion-col col-6>
-          <p text-center float-right>{{detailProd[0].id}}</p>
+          <p text-center float-right>{{detailProd.id}}</p>
         </ion-col>
       </div>
       <div class="data">
@@ -23,7 +23,7 @@
           <p text-center float-left><strong>Precio</strong></p>
         </ion-col>
         <ion-col col-6>
-          <p text-center float-right>$ {{detailProd[0].price}}</p>
+          <p text-center float-right>$ {{detailProd.precio}}</p>
         </ion-col>
       </div>
       <div class="data">
@@ -31,7 +31,7 @@
           <p text-center float-left><strong>Stock</strong></p>
         </ion-col>
         <ion-col col-6>
-          <p text-center float-right>{{detailProd[0].units}}</p>
+          <p text-center float-right>{{detailProd.stock}}</p>
         </ion-col>
       </div>
     </ion-row>
@@ -44,7 +44,7 @@
     </ion-row>
     <ion-row style="margin-top: 10%;" justify-content-center>
       <ion-col col-6 text-center>
-        <button class="user1" ion-button icon-only (click)="iniciarScan()">
+        <button class="user1" ion-button icon-only (click)="iniciiniciarScan()">
           <ion-icon name="qr-scanner"></ion-icon>
           <span text-center><p text-center>Escanear</p></span>
         </button>

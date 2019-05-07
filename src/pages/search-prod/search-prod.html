@@ -14,6 +14,9 @@
       (ionInput)="onInput($event)">
     </ion-searchbar>
   </ion-row>
+  <ion-row (click)="irADetalle()" justify-content-center>
+    <h1 class="inicio" padding text-center text-wrap>{{product.nombre}}</h1>
+  </ion-row>
   <ion-row justify-content-center style="margin-top: 15%;">
     <button ion-button color="btn" style="font-size:1.5em; padding-bottom: 8px;padding-top: 8px;text-transform: none;" (click)="buscar()">Buscar</button>
   </ion-row>

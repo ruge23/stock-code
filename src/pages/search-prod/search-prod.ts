@@ -12,20 +12,20 @@ import { DetailProdPage } from '../detail-prod/detail-prod';
 })
 export class SearchProdPage {
 
-  userData:any=[];
-  product:any=[];
+  userData: any = [];
+  product: any = [];
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private services: ServicesProvider,
     public app: App,
-    public loadingCtrl : LoadingController,
+    public loadingCtrl: LoadingController,
     private toastCtrl: ToastController
   ) {
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.userData = this.navParams.data;
   }
 
@@ -34,57 +34,55 @@ export class SearchProdPage {
     console.log('pa', this.navParams.data);
   }
 
-  getProducts(){
-    let loading = this.loadingCtrl.create({
-      content: 'Espere por favor...',
-      spinner: 'dots',
-    });
-    loading.present();
-    let index = Math.floor(Math.random() * 10 + 1);
-    //console.log('i', index);
-    this.services.getProducts().subscribe(data=>{
-      //console.log('data', data);
-      if(data['products'].length > 0){
-        this.product = data['products'].filter((prod)=>{
-          //console.log('prod', prod);
-          return index === prod['id'];
-        })
-      }else{
-        this.presentToast();
-      }
-      //console.log(this.product);
-    })
-    loading.dismiss();
-  }
+  // getProducts() {
+  //   let loading = this.loadingCtrl.create({
+  //     content: 'Espere por favor...',
+  //     spinner: 'dots',
+  //   });
+  //   loading.present();
+  //   let index = Math.floor(Math.random() * 10 + 1);
+  //   //console.log('i', index);
+  //   this.services.getProducts().subscribe(data => {
+  //     //console.log('data', data);
+  //     if (data['products'].length > 0) {
+  //       this.product = data['products'].filter((prod) => {
+  //         //console.log('prod', prod);
+  //         return index === prod['id'];
+  //       })
+  //     } else {
+  //       this.presentToast();
+  //     }
+  //     //console.log(this.product);
+  //   })
+  //   loading.dismiss();
+  // }
 
-  onInput(ev:any){
+  onInput(ev: any) {
     //console.log('entreeeeeeee' , ev.target.value);   
     let val = ev.target.value.trim();
     if (val.length >= 3 && !isNaN(val)) {
-      this.getProducts();
-      /* this.localesPrev2 = this.localesPrev2.filter((item) => {
-        //console.log('itemSearch', item);
-        return (item['nombre'].toLowerCase().indexOf(val.toLowerCase()) > -1);
-      }) */
-      //console.log(this.localesPrev2);
-    }else if(val === ""){
+      this.services.traerProductosPorCodigoArticulo(val).subscribe(x => {
+        this.product = x["data"];
+      });
+
+    } else if (val === "") {
       this.product = [];
-    }else if(isNaN(val)){
+    } else if (isNaN(val)) {
       this.presentToast();
     }
   }
 
-  buscar(){
-    this.navCtrl.push(DetailProdPage, {user: this.userData})
+  irADetalle() { 
+    this.navCtrl.push(DetailProdPage, this.product);
   }
 
-  goBackScan(){
-    let nav = this.app.getRootNav(); 
-    nav.setRoot(HomePage, {tabIndex: 0, user: this.userData, vuelta: true});
+  goBackScan() {
+    let nav = this.app.getRootNav();
+    nav.setRoot(HomePage, { tabIndex: 0, user: this.userData, vuelta: true });
   }
 
-  editProd(){
-    this.navCtrl.push(EditProdPage, {prod: this.product , user: this.userData});
+  editProd() {
+    this.navCtrl.push(EditProdPage, { prod: this.product, user: this.userData });
   }
 
   presentToast() {
@@ -92,7 +90,7 @@ export class SearchProdPage {
       message: 'No hay productos con ese número',
       duration: 2000,
       position: 'top'
-    });  
+    });
     toast.present();
   }
 }
