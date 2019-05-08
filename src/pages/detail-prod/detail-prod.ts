@@ -34,6 +34,7 @@ export class DetailProdPage {
     // this.devolverProd();
     this.userData = this.services.usuario;
     this.detailProd = this.navParams.data;
+    console.log("prod",this.detailProd)
   }
 
   ionViewDidLoad() {
@@ -63,7 +64,7 @@ export class DetailProdPage {
   // }
 
   goToSearch(){
-    this.navCtrl.push(SearchProdPage);
+    this.navCtrl.popTo(SearchProdPage);
   }
 
   iniciarScan(){

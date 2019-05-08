@@ -14,6 +14,7 @@ import { ServicesProvider } from '../providers/services/services';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   ],
   imports: [
     HttpClientModule,
+    HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],

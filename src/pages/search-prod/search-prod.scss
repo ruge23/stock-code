@@ -11,4 +11,14 @@ page-search-prod {
         color: white;
         font-size: 2.3em;
     }
+    .button-search{
+        font-size: 1.5em;
+        overflow-wrap: break-word;
+        padding-bottom: 8px;
+        padding-top: 8px;
+        text-transform: none;
+        max-width: 80%;
+        height: auto;
+        line-height: 1.4em;
+    }
 }

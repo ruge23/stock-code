@@ -60,16 +60,14 @@ export class SearchProdPage {
   onInput(ev: any) {
     //console.log('entreeeeeeee' , ev.target.value);   
     let val = ev.target.value.trim();
-    if (val.length >= 3 && !isNaN(val)) {
+    if (val.length >= 3) {
       this.services.traerProductosPorCodigoArticulo(val).subscribe(x => {
         this.product = x["data"];
       });
 
     } else if (val === "") {
       this.product = [];
-    } else if (isNaN(val)) {
-      this.presentToast();
-    }
+    } 
   }
 
   irADetalle() { 

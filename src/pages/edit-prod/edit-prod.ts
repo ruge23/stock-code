@@ -12,7 +12,7 @@ export class EditProdPage {
   
   @ViewChild('input') myInput ;
   producto:any=[];
-  prod:any=[];
+  
   userData:any=[];
   constructor(
     public navCtrl: NavController,
@@ -25,31 +25,29 @@ export class EditProdPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditProdPage');
-    setTimeout(() => {
-      this.myInput.setFocus();
-    },150);
+    
   }
 
   ionViewWillEnter(){
     console.log(this.navParams.data.user);
     
-    this.prod = this.navParams.data;
-    console.log('prod', this.prod);
-
+    this.producto = this.navParams.data;
+    console.log('prod', this.producto);
   }
 
   guardarProd() {
-    this.services.actualizarProducto(this.producto).subscribe(x => { 
+    console.log("antes", this.producto);
+    this.services.actualizarProducto(this.producto).subscribe(x => {
       const toast = this.toastCtrl.create({
         message: 'Producto Actualizado',
         duration: 2500,
         position: 'top'
       });
       toast.present();
-      setTimeout(()=>{
-        let nav = this.app.getRootNav(); 
-        nav.setRoot(HomePage, {user: this.userData, vuelta: true});
-      },2500)
-    })    
+      setTimeout(() => {
+        let nav = this.app.getRootNav();
+        nav.setRoot(HomePage, { user: this.userData, vuelta: true });
+      }, 3500)
+    });    
   }
 }

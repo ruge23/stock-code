@@ -32,8 +32,8 @@ export class ServicesProvider {
     const requestOptions = new RequestOptions({ headers: headers });
 
 
-    var body = JSON.stringify({ productoid: producto.id, stock: producto.stock, precio: producto.precio });
-    console.log(body);
-    return this.httpPost.post("http://ctrlztest.com.ar/ranto/apirest/actualizarproducto.php", body, { headers: headers, withCredentials: true });
+    var body = JSON.stringify({ productoid: producto.nro, stock: producto.stock, precio: producto.precio });
+    console.log("body actualuizar",body);
+    return this.httpPost.post("http://grillwest.dyndns.org/apirest/actualizarproducto.php", body, { headers: headers, withCredentials: true });
   }
 }

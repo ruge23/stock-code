@@ -4,7 +4,10 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-row style="margin-top: 20%;" *ngIf="prod.length > 0">
+  <ion-row style="margin-top: 20%;">
+      <ion-col col-12>
+          <h2 style="color: white;" text-center>{{producto.nombre}}</h2>
+        </ion-col>
     <ion-card class="cardEdit">
       <div padding>
         <ion-row class="data">
@@ -12,7 +15,7 @@
             <ion-label text-center float-left><strong>ID del Producto</strong></ion-label>
           </ion-col>
           <ion-col no-padding col-6>
-            <ion-input #input [(ngModel)]="producto.id" style="color: #b7884d;" text-end float-right></ion-input>
+            <p  style="color: #b7884d;" text-end float-right>{{producto.nro}}</p>
           </ion-col>
         </ion-row>
         <ion-row class="data">
@@ -20,7 +23,7 @@
             <ion-label text-center float-left><strong>Precio</strong></ion-label>
           </ion-col>
           <ion-col no-padding col-6>
-            <ion-input [(ngModel)]="producto.price" style="color: #b7884d;" text-end float-right></ion-input>
+            <ion-input [(ngModel)]="producto.precio" style="color: #b7884d;" text-end float-right></ion-input>
           </ion-col>
         </ion-row>
         <ion-row class="data">
@@ -28,7 +31,7 @@
             <ion-label text-center float-left><strong>Stock</strong></ion-label>
           </ion-col>
           <ion-col no-padding col-6>
-            <ion-input [(ngModel)]="producto.units" style="color: #b7884d;" text-end float-right></ion-input>
+            <ion-input [(ngModel)]="producto.stock" style="color: #b7884d;" text-end float-right></ion-input>
           </ion-col>
         </ion-row>
       </div>
